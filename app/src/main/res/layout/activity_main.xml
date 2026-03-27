@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/inputValueLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Convert:"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/inputValue"
+        android:layout_width="112dp"
+        android:layout_height="60dp"
+        android:ems="10"
+        android:inputType="number|numberDecimal"
+        android:text="0.0"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/inputValueLabel" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="From:"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/inputValue" />
+
+    <RadioGroup
+        android:id="@+id/radioFromGroup"
+        android:layout_width="match_parent"
+        android:layout_height="197dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2">
+
+        <RadioButton
+            android:id="@+id/fromMpgUS"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="MPG US" />
+
+        <RadioButton
+            android:id="@+id/fromMpgImperial"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="MPG Imperial" />
+
+        <RadioButton
+            android:id="@+id/fromKPL"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="KM per L" />
+
+        <RadioButton
+            android:id="@+id/fromLP100KM"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="L/100 KM" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/toTextLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="To:"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radioFromGroup" />
+
+    <RadioGroup
+        android:id="@+id/radioToGroup"
+        android:layout_width="match_parent"
+        android:layout_height="197dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/toTextLabel">
+
+        <RadioButton
+            android:id="@+id/toMpgUS"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="MPG US" />
+
+        <RadioButton
+            android:id="@+id/toMpgImperial"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="MPG Imperial" />
+
+        <RadioButton
+            android:id="@+id/toKPL"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="KM per L" />
+
+        <RadioButton
+            android:id="@+id/toLP100KM"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="L/100 KM" />
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/goButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Go"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:onClick="convertFE"
+        app:layout_constraintTop_toBottomOf="@+id/radioToGroup" />
+
+    <TextView
+        android:id="@+id/resultTextLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Result:"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/goButton" />
+
+    <TextView
+        android:id="@+id/resultTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:textSize="48sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/resultTextLabel" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
