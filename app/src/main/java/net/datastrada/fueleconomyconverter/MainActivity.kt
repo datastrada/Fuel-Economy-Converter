@@ -28,58 +28,83 @@ class MainActivity : AppCompatActivity() {
         var inputValue = findViewById<EditText>(R.id.inputValue).text.toString()
         var inputDouble: Double = inputValue.toDouble()
 
-        var resultDouble: Double? = null
-
         var inputRadioGroup = findViewById<RadioGroup>(R.id.radioFromGroup)
         var inputSelection = findViewById<RadioButton>(inputRadioGroup.checkedRadioButtonId)
 
-        var outputRadioGroup = findViewById<RadioGroup>(R.id.radioToGroup)
-        var outputSelection = findViewById<RadioButton>(outputRadioGroup.checkedRadioButtonId)
+        var usMpgResult: Double? = null
+        var impMpgResult: Double? = null
+        var kplResult: Double? = null
+        var lP100KmResult: Double? = null
 
+        val usMpgResultText = findViewById<TextView>(R.id.usMpgResultText)
+        val imperialMpgResultText = findViewById<TextView>(R.id.imperialMpgResultText)
+        val kplResultText = findViewById<TextView>(R.id.kplResultText)
+        val lP100KmResultText = findViewById<TextView>(R.id.lP100KmResultText)
+
+        // From US MPG
         if (inputSelection == findViewById(R.id.fromMpgUS)) {
-            print("From US MPG")
-            when (outputSelection) {
-                findViewById(R.id.toMpgUS) -> resultDouble = inputDouble
-                findViewById(R.id.toMpgImperial) -> resultDouble = convertUsMpgToImperialMpg(inputDouble)
-                findViewById(R.id.toKPL) -> resultDouble = convertUsMpgToKPL(inputDouble)
-                findViewById(R.id.toLP100KM) -> resultDouble = convertUsMpgToLP100KM(inputDouble)
-                else -> println("nothing selected")
-            }
+            // to US MPG
+            usMpgResult = inputDouble
+
+            // to Imperial MPG
+            impMpgResult =  convertUsMpgToImperialMpg(inputDouble)
+
+            // to KPL
+            kplResult = convertUsMpgToKPL(inputDouble)
+
+            // to L/100 KM
+            lP100KmResult = convertUsMpgToLP100KM(inputDouble)
+
+        // From Imperial MPG
         } else if (inputSelection == findViewById(R.id.fromMpgImperial)) {
-            print("From Imperial MPG")
-            when (outputSelection) {
-                findViewById(R.id.toMpgUS) -> resultDouble = convertImperialMpgToUsMpg(inputDouble)
-                findViewById(R.id.toMpgImperial) -> resultDouble = inputDouble
-                findViewById(R.id.toKPL) -> resultDouble = convertImperialMpgToKpl(inputDouble)
-                findViewById(R.id.toLP100KM) -> resultDouble = convertImperialMpgToLP100KM(inputDouble)
-                else -> println("nothing selected")
-            }
+            //To US MPG
+            usMpgResult = convertImperialMpgToUsMpg(inputDouble)
+
+            // to Imperial MPG
+            impMpgResult =  inputDouble
+
+            // to KPL
+            kplResult = convertImperialMpgToKpl(inputDouble)
+
+            // to L/100 KM
+            lP100KmResult = convertImperialMpgToLP100KM(inputDouble)
+
+        // From KPL
         } else if (inputSelection == findViewById(R.id.fromKPL)) {
-            print("From KPL")
-            when (outputSelection) {
-                findViewById(R.id.toMpgUS) -> resultDouble = convertKplToUsMpg(inputDouble)
-                findViewById(R.id.toMpgImperial) -> resultDouble = convertKplToImperialMpg(inputDouble)
-                findViewById(R.id.toKPL) -> resultDouble = inputDouble
-                findViewById(R.id.toLP100KM) -> resultDouble = convertKplToLP100KM(inputDouble)
-                else -> println("nothing selected")
-            }
+            //To US MPG
+            usMpgResult = convertKplToUsMpg(inputDouble)
+
+            // to Imperial MPG
+            impMpgResult =  convertKplToImperialMpg(inputDouble)
+
+            // to KPL
+            kplResult = inputDouble
+
+            // to L/100 KM
+            lP100KmResult = convertKplToLP100KM(inputDouble)
+
+
+        // from L/100 KM
         } else if (inputSelection == findViewById(R.id.fromLP100KM)) {
-            print("From L/100 KM")
-            when (outputSelection) {
-                findViewById(R.id.toMpgUS) -> resultDouble = convertLp100KmToUsMpg(inputDouble)
-                findViewById(R.id.toMpgImperial) -> resultDouble = convertLp100KmToImperialMpg(inputDouble)
-                findViewById(R.id.toKPL) -> resultDouble = convertLp100KmToKpl(inputDouble)
-                findViewById(R.id.toLP100KM) -> resultDouble = inputDouble
-                else -> println("No output value selected.")
-            }
-        } else {
-            println("No input selected.")
+            //To US MPG
+            usMpgResult = convertLp100KmToUsMpg(inputDouble)
+
+            // to Imperial MPG
+            impMpgResult =  convertLp100KmToImperialMpg(inputDouble)
+
+            // to KPL
+            kplResult = convertLp100KmToKpl(inputDouble)
+
+            // to L/100 KM
+            lP100KmResult = inputDouble
+
         }
 
-        if (resultDouble != null) {
-            val resultString: String = String.format("%.2f", resultDouble)
-            findViewById<TextView>(R.id.resultTextView).text = resultString
-        }
+        usMpgResultText.text = usMpgResult.toString()
+        imperialMpgResultText.text = impMpgResult.toString()
+        kplResultText.text = kplResult.toString()
+        lP100KmResultText.text = lP100KmResult.toString()
+
     }
 
 
