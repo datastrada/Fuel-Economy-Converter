@@ -100,10 +100,10 @@ class MainActivity : AppCompatActivity() {
 
         }
 
-        usMpgResultText.text = usMpgResult.toString()
-        imperialMpgResultText.text = impMpgResult.toString()
-        kplResultText.text = kplResult.toString()
-        lP100KmResultText.text = lP100KmResult.toString()
+        usMpgResultText.text = String.format("%.2f", usMpgResult)
+        imperialMpgResultText.text = String.format("%.2f", impMpgResult)
+        kplResultText.text = String.format("%.2f", kplResult)
+        lP100KmResultText.text = String.format("%.2f", lP100KmResult)
 
     }
 }
